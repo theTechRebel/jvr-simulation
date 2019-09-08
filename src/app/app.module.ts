@@ -7,13 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './ui/header.component';
+import { FooterComponent } from './ui/footer.component';
 import { HomeComponent } from './home/home.component';
+import { ListLecturesComponent } from './home/components/list-lectures/list-lectures.component';
+import { SelectTeacherComponent } from './home/components/select-teacher/select-teacher.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule ],
-  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent ],
+  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent ],
   bootstrap:    [ AppComponent ],
   providers: []
 })
