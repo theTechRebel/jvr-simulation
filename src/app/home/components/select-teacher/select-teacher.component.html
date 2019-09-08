@@ -1,3 +1,14 @@
-<p>
-  select-teacher works!
-</p>
+<div *ngIf="lecture >0">
+    Select a Teacher for {{lectureName.description}}
+    <div *ngFor="let teacher of teachers">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{teacher.id}}" value="{{teacher.id}}">
+            <label class="form-check-label">
+                {{teacher.firstName}} {{teacher.lastName}}
+            </label>
+          </div>
+    </div>
+</div>
+<div *ngIf="lecture == 0">
+Select a subject first to add a Teacher.
+</div>

@@ -1,3 +1,20 @@
-<p>
-  list-lectures works!
-</p>
+<button type="button" class="btn btn-danger btn-sm">Add New Lecture</button>
+<table *ngIf="lectures.length>0" class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lecture of lectures">
+        <th scope="row">{{lecture.id}}</th>
+        <td>{{lecture.description}}</td>
+        <td><button type="button" class="btn btn-danger btn-sm" (click)="selectLecture(lecture.id)">Select</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="lectures.length<1">
+    <sub>No lectures yet. Please Add One.</sub>
+  </div>
