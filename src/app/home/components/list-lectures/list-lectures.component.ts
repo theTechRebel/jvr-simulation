@@ -13,11 +13,14 @@ export class ListLecturesComponent implements OnInit{
 
   lectures:ILecture[]=[];
   existingStudents:IPerson[]=[];
+  teachers:IPerson[]=[];
 
   ngOnInit(): void {
     if(this.route.snapshot.data['lectures'].result)
       this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
-    
+
+    if(this.route.snapshot.data['teachers'].result)
+      this.teachers = this.route.snapshot.data['teachers'].result.items as IPerson[];
   }
   
   constructor(private route:ActivatedRoute,private homeService:HomeService) { 
@@ -37,16 +40,18 @@ export class ListLecturesComponent implements OnInit{
     var pos = upperCaseNames.indexOf(formVals.lectureName.toUpperCase());
 
     if(pos === -1){
-    if (confirm( "Are you sure you want create lecture: "+formVals.lectureName+" ?")) {
+    if (confirm( "Are you sure you want create a "+formVals.lectureName+" lecture?")) {
       var lecture:ILecture = {
         description: formVals.lectureName,
         id :0,
-        teacherId: 0
+        teacherId: +formVals.lectureTeacher
       }
       this.homeService.LectureServiceCreate(lecture).subscribe(
         response =>{
           if(response.success){
             window.alert(formVals.lectureName+" has been created.");
+            var newLecture:ILecture = response.result as ILecture;
+            this.lectures.push(newLecture);
           }
         }
       )

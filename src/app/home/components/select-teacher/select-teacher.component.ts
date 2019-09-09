@@ -30,6 +30,13 @@ export class SelectTeacherComponent implements OnInit {
         this.lectureName = this.lectures.find(obj => {
           return obj.id === lecture
         })
+
+        var nodes = document.querySelectorAll("[data-select-teacher]");
+        nodes.forEach(radioButton => {
+          radioButton.checked = false;
+        });
+
+        this.homeService.selectTeacher(false);
       }
     )
   }

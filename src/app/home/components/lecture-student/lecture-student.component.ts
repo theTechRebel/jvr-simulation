@@ -36,9 +36,11 @@ export class LectureStudentComponent implements OnInit {
 
         this.homeService.StudentLectureGetAll(0,10).subscribe(
           data=>{
+            this.students = [];
             this.lectureStudents = data.result.items as IStudentLecture[];
-            var presentStudents = this.lectureStudents.map(item => item.studentId);
-            this.lectureStudents.forEach(item => {
+            var currentLecture = this.lectureStudents.filter(lectStudent => lectStudent.lectureId == lecture);
+            console.log(currentLecture);
+            currentLecture.forEach(item => {
               this.students = this.existingStudents.filter(student => student.id === item.studentId);
             });
           }
@@ -101,7 +103,7 @@ export class LectureStudentComponent implements OnInit {
         }
       }
     )}else{
-      window.alert(student.firstName+" "+student.lastName+" si already enrolled in this lecture");
+      window.alert(student.firstName+" "+student.lastName+" is already enrolled in this lecture");
     }
   }
     
