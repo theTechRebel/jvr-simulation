@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -17,11 +17,12 @@ import { UserListModalComponent } from './common/userlist-modal.component';
 import {AddUserModalComponent} from './common/adduser-modal.component';
 import {JQ_TOKEN} from './common/jQuery.service';
 import {ModalTriggerDirective} from './common/modal-trigger.directive';
+import { TeachersComponent } from './teachers/teachers.component';
 
 let jQuery = window['$'];
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule, FormsModule ],
-  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent ],
+  imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule, FormsModule, ReactiveFormsModule ],
+  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent, TeachersComponent ],
   bootstrap:    [ AppComponent ],
   providers: [{provide:JQ_TOKEN,useValue: jQuery}]
 })

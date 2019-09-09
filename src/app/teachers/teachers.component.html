@@ -1,0 +1,67 @@
+<main role="main" class="container">
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="teachers">
+    <button  type="button" class="btn btn-danger btn-sm" modal-trigger data-new-lecture (click)="add()">Add New</button>
+    <table *ngIf="teachers.length>0" class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let teacher of teachers">
+            <th scope="row">{{teacher.id}}</th>
+            <td>{{teacher.firstName}}</td>
+            <td>{{teacher.lastName}}</td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="edit(teacher.id)">Edit</button> &nbsp; 
+                <button type="button" class="btn btn-danger btn-sm" (click)="delete(teacher.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div *ngIf="!teachers">
+        Please add a Teacher.
+      </div>
+    </div>
+  </div>
+  </main>
+
+  <userlist-modal title="Add New Teacher">
+    <div class="row">
+      <div class="col-md-12">
+      <form [formGroup]="teacherForm" (ngSubmit)="save(teacherForm.value)" autocomplete="off" novalidate style="margin-right:8px;">
+        <div class="form-group" [ngClass]="{'error': teacherForm.controls.firstName.invalid && teacherForm.controls.firstName.touched}">
+          <label for="firstName">First Name:</label>
+          <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name">
+        </div>
+
+        <div class="form-group" [ngClass]="{'error': teacherForm.controls.lastName.invalid && teacherForm.controls.lastName.touched}">
+            <label for="lastName">Last Name:</label>
+            <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name">
+          </div>
+
+          <div class="form-group" [ngClass]="{'error': teacherForm.controls.emailAddress.invalid && teacherForm.controls.emailAddress.touched}">
+              <label for="emailAddress">Email Address:</label>
+              <input formControlName="emailAddress" id="emailAddress" type="email" class="form-control" placeholder="Email Address">
+            </div>
+
+            <div class="form-group" [ngClass]="{'error': teacherForm.controls.telephoneNumber.invalid && teacherForm.controls.telephoneNumber.touched}">
+                <label for="telephoneNumber">Telephone Number:</label>
+                <input formControlName="telephoneNumber" id="telephoneNumber" type="text" class="form-control" placeholder="Telephone Number">
+              </div>
+            
+              <div class="form-group" [ngClass]="{'error': teacherForm.controls.dateOfBirth.invalid && teacherForm.controls.dateOfBirth.touched}">
+                  <label for="dateOfBirth">Date of Birth:</label>
+                  <input formControlName="dateOfBirth" id="dateOfBirth" type="date" class="form-control" placeholder="Date of Birth">
+                </div>
+          <button type="submit" class="btn btn-danger btn-sm">Save Teacher</button> &nbsp;
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="cancel()">Cancel</button>
+        </form>
+        </div>
+        </div>
+  </userlist-modal>
