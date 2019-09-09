@@ -25,6 +25,16 @@ export class HomeService {
       return of(result as T);
     }
   }
+
+  //LectureService/Create
+  //Created a lecture
+    //@params lecture - specify a lecture object to create type ILecture 
+    LectureServiceCreate(lecture:ILecture):Observable<any>{
+      return this.http.post<any>(this.BASE_URL+"/LectureService/Create",lecture)
+      .pipe(catchError(this.handleError<any>('LectureServiceCreate',{})))
+    }
+
+
   //LectureService/GetAll
   //Retrieves a list of all lectures
     //@params skipcount - specify how many records to skip type integer 

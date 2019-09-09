@@ -20,7 +20,7 @@ import {ModalTriggerDirective} from './common/modal-trigger.directive';
 
 let jQuery = window['$'];
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule ],
+  imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule, FormsModule ],
   declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent ],
   bootstrap:    [ AppComponent ],
   providers: [{provide:JQ_TOKEN,useValue: jQuery}]
