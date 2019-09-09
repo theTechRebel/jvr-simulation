@@ -18,8 +18,11 @@ export class SelectTeacherComponent implements OnInit {
   constructor(private route:ActivatedRoute,private homeService:HomeService) { }
 
   ngOnInit() {
-    this.teachers = this.route.snapshot.data['teachers'].result.items as IPerson[];
-    this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
+    if(this.route.snapshot.data['teachers'].result)
+      this.teachers = this.route.snapshot.data['teachers'].result.items as IPerson[];
+
+      if(this.route.snapshot.data['lectures'].result)
+        this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
 
     this.homeService.selectLecture$.subscribe(
       lecture=>{

@@ -10,10 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListLecturesComponent implements OnInit{
 
-  lectures:ILecture[];
+  lectures:ILecture[]=[];
 
   ngOnInit(): void {
-     this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
+    if(this.route.snapshot.data['lectures'].result)
+      this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
+    
   }
   
   constructor(private route:ActivatedRoute,private homeService:HomeService) { 

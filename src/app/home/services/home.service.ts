@@ -51,13 +51,30 @@ export class HomeService {
       .pipe(catchError(this.handleError<any>('StudentServiceGet',{})))
     }
 
-  //StudentLecture/GetAll
+  //StudentService/GetAll
+  //Retrieves a list of all Students
+    //@params skipcount - specify how many records to skip type integer 
+    //@params maxresult - specify how many results to return type integer
+    StudentServiceGetAll(skipcount:number,maxresult:number):Observable<any>{
+      return this.http.get<any>(this.BASE_URL+"StudentService/GetAll?SkipCount="+skipcount+"&MaxResultCount="+maxresult)
+      .pipe(catchError(this.handleError<any>('StudentServiceGetAll',[])))
+    }
+
+  //LectureStudentService/GetAll
   //Retrieves a list of all Student-Lectures
     //@params skipcount - specify how many records to skip type integer 
     //@params maxresult - specify how many results to return type integer
     StudentLectureGetAll(skipcount:number,maxresult:number):Observable<any>{
       return this.http.get<any>(this.BASE_URL+"LectureStudentService/GetAll?SkipCount="+skipcount+"&MaxResultCount="+maxresult)
       .pipe(catchError(this.handleError<any>('StudentLectureGetAll',[])))
+    }
+
+    //LectureStudentService/Delete
+    //Removed Student from Lecture
+    //@params id - specify record to be removed type integer
+    StudentLectureDelete(id:number):Observable<any>{
+      return this.http.delete<any>(this.BASE_URL+"LectureStudentService/Delete?Id="+id)
+      .pipe(catchError(this.handleError<any>('StudentLectureDelete',{})))
     }
 
     //A subject for info to be passed between Lecture-List Component & Teacher-List Component

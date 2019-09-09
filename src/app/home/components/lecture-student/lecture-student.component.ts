@@ -12,6 +12,7 @@ export class LectureStudentComponent implements OnInit {
 
   lectures:ILecture[];
   students:IPerson[]=[];
+  existingStudents:IPerson[];
   lectureStudents:IStudentLecture[];
   lecture:number = 0;
   lectureName:ILecture;
@@ -20,7 +21,8 @@ export class LectureStudentComponent implements OnInit {
   constructor(private route:ActivatedRoute, private homeService:HomeService) { }
 
   ngOnInit() {
-    this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
+    if(this.route.snapshot.data['lectures'].result)
+      this.lectures = this.route.snapshot.data['lectures'].result.items as ILecture[];
 
     this.homeService.selectLecture$.subscribe(
       lecture=>{
@@ -49,6 +51,19 @@ export class LectureStudentComponent implements OnInit {
     this.homeService.selectTeacher$.subscribe(
       teacher=>{
         this.hasTeacherBeenSelected = teacher;
+      }
+    )
+  }
+
+  removeStudent(studentID){
+
+  }
+
+  addStudent(start:number,max:number){
+    this.homeService.StudentServiceGetAll(start,max).subscribe(
+      data=>{
+        this.existingStudents = [];
+        this.existingStudents = data.result.items as IPerson[];
       }
     )
   }
