@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HomeService } from '../../services/home.service';
-import { ILecture } from '../../models/home.model';
+import { ILecture, IPerson } from '../../models/home.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ListLecturesComponent implements OnInit{
 
   lectures:ILecture[]=[];
+  existingStudents:IPerson[]=[];
 
   ngOnInit(): void {
     if(this.route.snapshot.data['lectures'].result)
