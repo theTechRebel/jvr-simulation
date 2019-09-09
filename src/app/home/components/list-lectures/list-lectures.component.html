@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-danger btn-sm">Add New Lecture</button>
+<button *ngIf="lectures" type="button" class="btn btn-danger btn-sm">Add New Lecture</button>
 <table *ngIf="lectures.length>0" class="table table-sm">
     <thead>
       <tr>

@@ -6,10 +6,7 @@ import { HomeService } from './services/home.service';
 
 @Component({
   templateUrl: './home.component.html',
-  styles: [`
-            main{ margin-top:20px;};
-            .row > div { margin:10px};
-          `]
+  styles: ['']
 })
 export class HomeComponent {
 

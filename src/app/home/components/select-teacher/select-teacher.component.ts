@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HomeService } from '../../services/home.service';
-import { IPerson, ILecture } from '../../models/home.model';
+import { IPerson, ILecture, IStudentLecture } from '../../models/home.model';
 
 @Component({
   selector: 'app-select-teacher',
@@ -10,8 +10,8 @@ import { IPerson, ILecture } from '../../models/home.model';
 })
 export class SelectTeacherComponent implements OnInit {
 
-  teachers;
-  lectures;
+  teachers:IPerson[];
+  lectures:ILecture[];
   lecture:number = 0;
   lectureName:ILecture;
 
@@ -29,6 +29,10 @@ export class SelectTeacherComponent implements OnInit {
         })
       }
     )
+  }
+
+  selectTeacher(){
+    this.homeService.selectTeacher(true);
   }
 
 }

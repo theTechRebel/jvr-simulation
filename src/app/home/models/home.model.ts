@@ -14,3 +14,10 @@ export interface IPerson{
     dateOfBirth: Date,
     id: number
 }
+
+//represents a Student-Lecture relationship
+export interface IStudentLecture{
+    lectureId: number,
+    studentId: number,
+    id: number
+}

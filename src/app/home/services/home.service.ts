@@ -43,6 +43,23 @@ export class HomeService {
       .pipe(catchError(this.handleError<any>('TeacherServiceGetAll',[])))
     }
 
+    //StudentService/Get
+  //Retrieves a Student
+    //@params id - specify the id of the record to return type integer
+    StudentServiceGet(id:number):Observable<any>{
+      return this.http.get<any>(this.BASE_URL+"StudentService/Get?Id="+id)
+      .pipe(catchError(this.handleError<any>('StudentServiceGet',{})))
+    }
+
+  //StudentLecture/GetAll
+  //Retrieves a list of all Student-Lectures
+    //@params skipcount - specify how many records to skip type integer 
+    //@params maxresult - specify how many results to return type integer
+    StudentLectureGetAll(skipcount:number,maxresult:number):Observable<any>{
+      return this.http.get<any>(this.BASE_URL+"LectureStudentService/GetAll?SkipCount="+skipcount+"&MaxResultCount="+maxresult)
+      .pipe(catchError(this.handleError<any>('StudentLectureGetAll',[])))
+    }
+
     //A subject for info to be passed between Lecture-List Component & Teacher-List Component
     private _selectLecture = new Subject<number>();
     //the Observable to be subscribed to
@@ -51,5 +68,15 @@ export class HomeService {
     // to be subscribed to by TEacher-List
     selectLecture(lecture:number){
       this._selectLecture.next(lecture);
+    }
+
+    //A subject for info to be passed between Select-Teacher Component & Lecture-Student Component
+    private _selectTeacher = new Subject<boolean>();
+    //the Observable to be subscribed to
+    selectTeacher$ = this._selectTeacher.asObservable();
+    //Method to send message between Select-Teacher Component & Lecture-Student Component
+    // to be subscribed to by Lecture-Student
+    selectTeacher(selected:boolean){
+      this._selectTeacher.next(selected);
     }
 }

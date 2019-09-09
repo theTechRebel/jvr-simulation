@@ -12,10 +12,11 @@ import { FooterComponent } from './ui/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ListLecturesComponent } from './home/components/list-lectures/list-lectures.component';
 import { SelectTeacherComponent } from './home/components/select-teacher/select-teacher.component';
+import { LectureStudentComponent } from './home/components/lecture-student/lecture-student.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule ],
-  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent ],
+  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent ],
   bootstrap:    [ AppComponent ],
   providers: []
 })
