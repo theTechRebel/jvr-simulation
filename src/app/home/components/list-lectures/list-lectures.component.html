@@ -1,4 +1,4 @@
-<button *ngIf="lectures" type="button" class="btn btn-danger btn-sm" modal-trigger>Add New Lecture</button>
+<button *ngIf="lectures" type="button" class="btn btn-danger btn-sm" modal-trigger data-new-lecture>Add New Lecture</button>
 <table *ngIf="lectures.length>0" class="table table-sm">
     <thead>
       <tr>
@@ -19,12 +19,12 @@
     <sub>No lectures yet. Please Add One.</sub>
   </div>
 
-  <userlist-modal title="Add New Subject">
-    <div class="list-group">
-    <form class="form">
-      <label>Enter subject name</label><br/>
-      <input type="text" name="subject" value="" class="input"><br/><br/>
-      <input type="submit" class="btn btn-danger btn-sm">
-    </form>
-    </div>
-    </userlist-modal>
+  <userlist-modal title="Add New Lecture">
+  <div class="list-group">
+  <form class="form">
+    <label>Enter lecture name</label><br/>
+    <input type="text" name="subject" value="" class="input"><br/><br/>
+    <input type="submit" class="btn btn-danger btn-sm">
+  </form>
+  </div>
+  </userlist-modal>

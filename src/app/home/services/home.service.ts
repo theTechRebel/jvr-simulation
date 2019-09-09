@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { Observable, of, Subject } from 'rxjs';
-import { ILecture } from '../models/home.model';
+import { ILecture, IStudentLecture } from '../models/home.model';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
@@ -75,6 +75,14 @@ export class HomeService {
     StudentLectureDelete(id:number):Observable<any>{
       return this.http.delete<any>(this.BASE_URL+"LectureStudentService/Delete?Id="+id)
       .pipe(catchError(this.handleError<any>('StudentLectureDelete',{})))
+    }
+
+    //LectureStudentService/Create
+    //Add Student to Lecture
+    //@params lectureStudent - specify a StudentLecture object type IStudentLecture
+    StudentLectureCreate(lectureStudent:IStudentLecture):Observable<any>{
+      return this.http.post<any>(this.BASE_URL+"LectureStudentService/Create",lectureStudent)
+      .pipe(catchError(this.handleError<any>('StudentLectureCreate',{})))
     }
 
     //A subject for info to be passed between Lecture-List Component & Teacher-List Component

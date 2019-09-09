@@ -14,13 +14,14 @@ import { ListLecturesComponent } from './home/components/list-lectures/list-lect
 import { SelectTeacherComponent } from './home/components/select-teacher/select-teacher.component';
 import { LectureStudentComponent } from './home/components/lecture-student/lecture-student.component';
 import { UserListModalComponent } from './common/userlist-modal.component';
+import {AddUserModalComponent} from './common/adduser-modal.component';
 import {JQ_TOKEN} from './common/jQuery.service';
 import {ModalTriggerDirective} from './common/modal-trigger.directive';
 
 let jQuery = window['$'];
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule ],
-  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective ],
+  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent ],
   bootstrap:    [ AppComponent ],
   providers: [{provide:JQ_TOKEN,useValue: jQuery}]
 })
