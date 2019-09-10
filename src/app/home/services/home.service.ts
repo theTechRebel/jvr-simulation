@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http'
 import { Observable, of, Subject } from 'rxjs';
 import { ILecture, IStudentLecture, IPerson } from '../models/home.model';
 import {catchError} from 'rxjs/operators';
+import { LoaderService } from 'src/app/common/loader/services/loader.service';
 
 @Injectable({
   providedIn: 'root'

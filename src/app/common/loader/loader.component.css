@@ -1,0 +1,29 @@
+.loader-hidden {
+    visibility: hidden;
+}
+.loader-overlay {
+    position: fixed;
+    width:100%;
+    top:0;
+    left: 0;
+    opacity: 10;
+    z-index: 10;
+}
+.loadercss{
+top: 35%;
+position: fixed;
+left: 42.5%;
+z-index: 10;
+}
+.progressbar{
+    position: relative;
+    margin-top: 60px;  
+}
+.center {
+    display: block;
+    margin-left: 40%;
+    margin-top: 10%;
+    margin-right: auto;
+    width: 5%;
+    position:absolute;
+  }

@@ -1,0 +1,11 @@
+<div [class.loader-hidden]="!show">
+    <div class="loader-overlay">
+            <div class="progressbar">
+                    <img src="assets/loading.gif" class="center"/>
+                <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+            </div>
+            <div class="loadercss" align="center">
+                <mat-spinner mode="indeterminate" *ngIf="show"></mat-spinner>
+            </div>
+    </div>
+  </div>

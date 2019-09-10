@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,13 +19,16 @@ import {AddUserModalComponent} from './common/adduser-modal.component';
 import {JQ_TOKEN} from './common/jQuery.service';
 import {ModalTriggerDirective} from './common/modal-trigger.directive';
 import { TeachersComponent } from './teachers/teachers.component';
+import { LoaderComponent } from './common/loader/loader.component';
+import { LoaderInterceptorService } from './common/loader/services/loader-interceptor.service';
+import {MatProgressBarModule, MatProgressSpinnerModule} from '@angular/material';
 
 let jQuery = window['$'];
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule, FormsModule, ReactiveFormsModule ],
-  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent, TeachersComponent,Error404Component ],
+  imports:      [ BrowserModule,   MatProgressBarModule, MatProgressSpinnerModule,FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule, FormsModule, ReactiveFormsModule ],
+  declarations: [ AppComponent,  LoaderComponent,HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent, TeachersComponent,Error404Component ],
   bootstrap:    [ AppComponent ],
-  providers: [{provide:JQ_TOKEN,useValue: jQuery}]
+  providers: [{provide:JQ_TOKEN,useValue: jQuery},{provide: HTTP_INTERCEPTORS,useClass: LoaderInterceptorService,multi: true}]
 })
 export class AppModule { }
  
