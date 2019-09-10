@@ -11,7 +11,7 @@ export interface IPerson{
     lastName: string,
     emailAddress: string,
     telephoneNumber: string,
-    dateOfBirth: Date,
+    dateOfBirth: string,
     id: number
 }
 

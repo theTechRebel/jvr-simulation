@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { Observable, of, Subject } from 'rxjs';
-import { ILecture, IStudentLecture } from '../models/home.model';
+import { ILecture, IStudentLecture, IPerson } from '../models/home.model';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
@@ -53,6 +53,30 @@ export class HomeService {
       .pipe(catchError(this.handleError<any>('TeacherServiceGetAll',[])))
     }
 
+    //TeacherService/Create
+  //Create a new Teacher
+    //@params teacher - specify a teacher to create type IPerson object
+    TeacherServiceCreate(teacher:IPerson):Observable<any>{
+      return this.http.post<any>(this.BASE_URL+"TeacherService/Create",teacher)
+      .pipe(catchError(this.handleError<any>('TeacherServiceCreate',{})))
+    }
+
+    //TeacherService/Update
+  //Update a Teacher
+    //@params teacher - specify a teacher to create type IPerson object
+    TeacherServiceUpdate(teacher:IPerson):Observable<any>{
+      return this.http.put<any>(this.BASE_URL+"TeacherService/Update",teacher)
+      .pipe(catchError(this.handleError<any>('TeacherServiceUpdate',{})))
+    }
+
+    //TeacherService/Delete
+    //Removed teacher from Lecture
+    //@params id - specify record to be removed type integer
+    TeacherServiceDelete(id:number):Observable<any>{
+      return this.http.delete<any>(this.BASE_URL+"TeacherService/Delete?Id="+id)
+      .pipe(catchError(this.handleError<any>('TeacherServiceDelete',{})))
+    }
+
     //StudentService/Get
   //Retrieves a Student
     //@params id - specify the id of the record to return type integer
@@ -94,6 +118,7 @@ export class HomeService {
       return this.http.post<any>(this.BASE_URL+"LectureStudentService/Create",lectureStudent)
       .pipe(catchError(this.handleError<any>('StudentLectureCreate',{})))
     }
+    
 
     //A subject for info to be passed between Lecture-List Component & Teacher-List Component
     private _selectLecture = new Subject<number>();

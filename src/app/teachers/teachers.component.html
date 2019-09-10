@@ -1,8 +1,8 @@
 <main role="main" class="container">
 <div class="row">
   <div class="col-md-12">
+      <button  type="button" class="btn btn-danger btn-sm" modal-trigger data-new-lecture (click)="add()">Add New</button>
     <div *ngIf="teachers">
-    <button  type="button" class="btn btn-danger btn-sm" modal-trigger data-new-lecture (click)="add()">Add New</button>
     <table *ngIf="teachers.length>0" class="table">
         <thead>
           <tr>
@@ -34,30 +34,61 @@
   <userlist-modal title="Add New Teacher">
     <div class="row">
       <div class="col-md-12">
-      <form [formGroup]="teacherForm" (ngSubmit)="save(teacherForm.value)" autocomplete="off" novalidate style="margin-right:8px;">
-        <div class="form-group" [ngClass]="{'error': teacherForm.controls.firstName.invalid && teacherForm.controls.firstName.touched}">
+      <form [formGroup]="teacherForm" (ngSubmit)="save(teacherForm.value)" autocomplete="off" style="margin-right:8px;" novalidate>
+        <input type="hidden" formControlName="id" id="id">
+        <div class="form-group">
           <label for="firstName">First Name:</label>
-          <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name">
+          <input formControlName="firstName" id="firstName" type="text" class="form-control" [ngClass]="{'is-invalid': !validateFirstName(),'is-valid':validateFirstName()}" placeholder="First Name">
+          <div *ngIf="!validateFirstName() && teacherForm.controls.firstName.errors.required" class="invalid-feedback">
+              Please enter first name
+            </div>
+            <div *ngIf="!validateFirstName() && teacherForm.controls.firstName.errors.pattern" class="invalid-feedback">
+               first name must contain only alphabetic characters
+              </div>
         </div>
 
-        <div class="form-group" [ngClass]="{'error': teacherForm.controls.lastName.invalid && teacherForm.controls.lastName.touched}">
+        <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name">
+            <input formControlName="lastName" id="lastName" type="text" class="form-control" [ngClass]="{'is-invalid': !validateLastName(),'is-valid':validateLastName()}" placeholder="Last Name">
+            <div *ngIf="!validateLastName() && teacherForm.controls.lastName.errors.required" class="invalid-feedback">
+                Please enter last name
+              </div>
+              <div *ngIf="!validateLastName() && teacherForm.controls.lastName.errors.pattern" class="invalid-feedback">
+                  last name must contain only alphabetic characters
+                </div>
           </div>
 
-          <div class="form-group" [ngClass]="{'error': teacherForm.controls.emailAddress.invalid && teacherForm.controls.emailAddress.touched}">
+          <div class="form-group">
               <label for="emailAddress">Email Address:</label>
-              <input formControlName="emailAddress" id="emailAddress" type="email" class="form-control" placeholder="Email Address">
+              <input formControlName="emailAddress" id="emailAddress" type="email" class="form-control" [ngClass]="{'is-invalid': !validateEmail(),'is-valid':validateEmail()}" placeholder="Email Address">
+              <div *ngIf="!validateEmail() && teacherForm.controls.emailAddress.errors.required" class="invalid-feedback">
+                  Please enter email address
+                </div>
+                <div *ngIf="!validateEmail() && teacherForm.controls.emailAddress.errors.email" class="invalid-feedback">
+                    Please enter a valid email address
+                  </div>
             </div>
 
-            <div class="form-group" [ngClass]="{'error': teacherForm.controls.telephoneNumber.invalid && teacherForm.controls.telephoneNumber.touched}">
+            <div class="form-group">
                 <label for="telephoneNumber">Telephone Number:</label>
-                <input formControlName="telephoneNumber" id="telephoneNumber" type="text" class="form-control" placeholder="Telephone Number">
+                <input formControlName="telephoneNumber" id="telephoneNumber" type="text" class="form-control" [ngClass]="{'is-invalid':!validateTelephone(),'is-valid':validateTelephone()}" placeholder="Telephone Number">
+                <div *ngIf="!validateTelephone() && teacherForm.controls.telephoneNumber.errors.required" class="invalid-feedback">
+                    Please enter telephone number
+                  </div>
+                  <div *ngIf="!validateTelephone() && teacherForm.controls.telephoneNumber.errors.pattern" class="invalid-feedback">
+                      Please enter a valid telephone number
+                    </div>
               </div>
             
-              <div class="form-group" [ngClass]="{'error': teacherForm.controls.dateOfBirth.invalid && teacherForm.controls.dateOfBirth.touched}">
+              <div class="form-group">
                   <label for="dateOfBirth">Date of Birth:</label>
-                  <input formControlName="dateOfBirth" id="dateOfBirth" type="date" class="form-control" placeholder="Date of Birth">
+                  <input formControlName="dateOfBirth" id="dateOfBirth" type="date" class="form-control" [ngClass]="{'is-invalid': !validateDateOfBirth(),'is-valid':validateDateOfBirth()}" placeholder="Date of Birth">
+                  <div *ngIf="!validateDateOfBirth() && teacherForm.controls.dateOfBirth.errors.required" class="invalid-feedback">
+                      Please enter date of birth
+                    </div>
+                    <div *ngIf="!validateDateOfBirth() && teacherForm.controls.dateOfBirth.errors.pattern" class="invalid-feedback">
+                        Please a valid date of birth
+                      </div>
                 </div>
           <button type="submit" class="btn btn-danger btn-sm">Save Teacher</button> &nbsp;
           <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="cancel()">Cancel</button>
