@@ -17,6 +17,12 @@ import { Component, OnInit } from '@angular/core';
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/teachers']">Teachers</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/students']">Students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/lecture']">Lecture</a>
+      </li>
     </ul>
   </div>
 </nav>

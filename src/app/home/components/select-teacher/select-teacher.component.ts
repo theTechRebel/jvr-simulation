@@ -32,9 +32,10 @@ export class SelectTeacherComponent implements OnInit {
         })
 
         var nodes = document.querySelectorAll("[data-select-teacher]");
-        nodes.forEach(radioButton => {
-          radioButton.checked = false;
-        });
+        for (var i = 0; i < nodes.length; i++) {
+          var element = nodes[i] as HTMLInputElement
+          element.checked = false;
+        }
 
         this.homeService.selectTeacher(false);
       }

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './ui/header.component';
 import { FooterComponent } from './ui/footer.component';
 import { HomeComponent } from './home/home.component';
+import {Error404Component} from './common/404.component';
 import { ListLecturesComponent } from './home/components/list-lectures/list-lectures.component';
 import { SelectTeacherComponent } from './home/components/select-teacher/select-teacher.component';
 import { LectureStudentComponent } from './home/components/lecture-student/lecture-student.component';
@@ -22,7 +23,7 @@ import { TeachersComponent } from './teachers/teachers.component';
 let jQuery = window['$'];
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule,  BrowserAnimationsModule, FormsModule, ReactiveFormsModule ],
-  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent, TeachersComponent ],
+  declarations: [ AppComponent,  HeaderComponent, FooterComponent, HomeComponent, ListLecturesComponent, SelectTeacherComponent, LectureStudentComponent,UserListModalComponent,ModalTriggerDirective,AddUserModalComponent, TeachersComponent,Error404Component ],
   bootstrap:    [ AppComponent ],
   providers: [{provide:JQ_TOKEN,useValue: jQuery}]
 })
