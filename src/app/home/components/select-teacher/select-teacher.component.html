@@ -1,6 +1,6 @@
-<div *ngIf="lecture >0">
-    Select a Teacher for {{lectureName.description}}
-    <div *ngFor="let teacher of teachers">
+<div *ngIf="lecture >0" >
+    <h3>Select a Teacher for {{lectureName.description}}</h3>
+    <div *ngFor="let teacher of teachers" class="card">
         <div class="form-check">
             <input class="form-check-input" data-select-teacher type="radio" name="{{teacher.id}}" value="{{teacher.id}}" (change)="selectTeacher(teacher.id)">
             <label class="form-check-label">
@@ -10,5 +10,5 @@
     </div>
 </div>
 <div *ngIf="lecture == 0">
-Select a subject first to add a Teacher.
+<h3>Select a subject first to add a Teacher.</h3>
 </div>
